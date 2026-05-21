@@ -1,0 +1,10 @@
+flask
+flask-cors
+pandas
+numpy
+scikit-learn
+statsmodels
+openpyxl
+mysql-connector-python
+reportlab
+python-dotenv

@@ -1,0 +1,36 @@
+CREATE DATABASE IF NOT EXISTS gas_prediction;
+USE gas_prediction;
+
+CREATE TABLE IF NOT EXISTS datasets (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  filename VARCHAR(255) NOT NULL,
+  original_filename VARCHAR(255) NOT NULL,
+  rows_count INT NOT NULL,
+  columns_json JSON NOT NULL,
+  uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS prediction_history (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  dataset_filename VARCHAR(255) NOT NULL,
+  target_column VARCHAR(255) NOT NULL,
+  model_equation VARCHAR(255),
+  daily_forecast DOUBLE,
+  weekly_forecast DOUBLE,
+  monthly_forecast DOUBLE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS reports (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  filename VARCHAR(255) NOT NULL,
+  report_type VARCHAR(50) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS app_logs (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  level VARCHAR(32) NOT NULL,
+  message TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
